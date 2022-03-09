@@ -19,19 +19,21 @@ function cameraStart() {
 }
 
 function orientationHandler(eventData) {
+  console.info("Got an orientation event")
+
   var tiltLR = eventData.gamma;
   var tiltFB = eventData.beta;
   var direction = eventData.alpha;
 
-  hud.innerHtml = Math.round(tiltFB);
+  hud.textContent = Math.round(tiltFB);
 }
 
 function hudStart() {
   if (window.DeviceOrientationEvent) {
-    hud.innerHTML = "Ready"
+    hud.textContent = "Ready"
     window.addEventListener('deviceorientation', orientationHandler, false);
   } else {
-    hud.innerHTML = "No Data"
+    hud.textContent = "No Data"
   }
 }
 
