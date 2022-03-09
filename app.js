@@ -27,7 +27,12 @@ function orientationHandler(eventData) {
 }
 
 function hudStart() {
-  window.addEventListener('deviceorientation', orientationHandler, false);
+  if (window.DeviceOrientationEvent) {
+    hud.innerHTML = "Ready"
+    window.addEventListener('deviceorientation', orientationHandler, false);
+  } else {
+    hud.innerHTML = "No Data"
+  }
 }
 
 function startApp() {
