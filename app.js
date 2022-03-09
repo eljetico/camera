@@ -30,8 +30,17 @@ function orientationHandler(eventData) {
 
 function hudStart() {
   if (window.DeviceOrientationEvent) {
-    hud.textContent = "0224"
-    window.addEventListener("deviceorientation", orientationHandler, false);
+    hud.textContent = "1025"
+    if (DeviceMotionEvent.requestPermission) {
+      DeviceMotionEvent.requestPermission()
+      .then(response => {
+        if (response == "granted") {
+          window.addEventListener("deviceorientation", orientationHandler, false);
+        } else {
+          console.log("DeviceOrientationEvent permission denied")
+        }
+      }).catch((err) => { console.log(err)}
+    }
   } else {
     hud.textContent = "No Data"
   }
