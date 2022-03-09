@@ -37,9 +37,9 @@ function hudStart() {
         if (response == "granted") {
           window.addEventListener("deviceorientation", orientationHandler, false);
         } else {
-          console.log("DeviceOrientationEvent permission denied")
+          console.log("DeviceOrientationEvent permission denied");
         }
-      }).catch((err) => { console.log(err)}
+      }).catch((err) => { console.log(err) });
     }
   } else {
     hud.textContent = "No Data"
