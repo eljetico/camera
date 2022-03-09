@@ -13,11 +13,11 @@ function addHudDataToImage(cameraSensor) {
   if (!hudActive) { return true };
 
   ctx = cameraSensor.getContext("2d")
-  ctx.font = '40px "Andale Mono"';
-  ctx.textAlign = 'center';
+  ctx.font = "20px 'Andale Mono'";
+  ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = '#66ff00';  // a color name or by using rgb/rgba/hex values
-  ctx.fillText("PTCH " + pitchAngle, 150, 50); // text and position
+  ctx.fillText("PTCH " + pitchAngle, 50, 50); // text and position
 }
 
 function cameraStart() {
@@ -33,9 +33,9 @@ function cameraStart() {
 }
 
 function orientationHandler(eventData) {
-  var tiltLR = eventData.gamma;
-  pitchAngle = eventData.beta;
-  var direction = eventData.alpha;
+  // var tiltLR = eventData.gamma;
+  pitchAngle = Math.round(eventData.beta);
+  // var direction = eventData.alpha;
 
   hud.textContent = Math.round(pitchAngle);
 }
