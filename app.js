@@ -27,7 +27,7 @@ function orientationHandler(eventData) {
 }
 
 function hudStart() {
-  hud.textContent = "--"
+  hud.textContent = "-"
   window.addEventListener("deviceorientation", orientationHandler, false);
 }
 
