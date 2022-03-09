@@ -27,6 +27,15 @@ html, body{
     left: calc(50% - 100px);
 }
 
+#hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: green;
+    font-size: 1em;
+    z-index: 99;
+}
+
 .taken{
     height: 120px!important;
     width: 90px!important;
@@ -37,5 +46,3 @@ html, body{
     right: 20px;
     z-index: 2;
 }
-
-
