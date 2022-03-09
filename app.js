@@ -4,9 +4,10 @@ const cameraView = document.querySelector("#camera--view"),
       cameraOutput = document.querySelector("#camera--output"),
       cameraSensor = document.querySelector("#camera--sensor"),
       cameraTrigger = document.querySelector("#camera--trigger"),
-      hud = document.querySelector("#hud"),
-      pitchAngle = 0,
-      hudActive = false
+      hud = document.querySelector("#hud")
+
+var pitchAngle = 0;
+var hudActive = false;
 
 function addHudDataToImage(cameraSensor) {
   if (!hudActive) { return true };
