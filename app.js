@@ -3,8 +3,8 @@ var constraints = { video: { facingMode: "environment" }, audio: false };
 const cameraView = document.querySelector("#camera--view"),
       cameraOutput = document.querySelector("#camera--output"),
       cameraSensor = document.querySelector("#camera--sensor"),
-      cameraTrigger = document.querySelector("#camera--trigger")
-
+      cameraTrigger = document.querySelector("#camera--trigger"),
+      hud = document.querySelector("#hud")
 
 function cameraStart() {
     navigator.mediaDevices
@@ -18,6 +18,23 @@ function cameraStart() {
     });
 }
 
+function orientationHandler(eventData) {
+  var tiltLR = eventData.gamma;
+  var tiltFB = eventData.beta;
+  var direction = eventData.alpha;
+
+  hud.innerHtml = Math.round(tiltFB);
+}
+
+function hudStart() {
+  window.addEventListener('deviceorientation', orientationHandler, false);
+}
+
+function startApp() {
+  cameraStart();
+  hudStart();
+}
+
 cameraTrigger.onclick = function() {
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
@@ -26,4 +43,4 @@ cameraTrigger.onclick = function() {
     cameraOutput.classList.add("taken");
 };
 
-window.addEventListener("load", cameraStart, false);
+window.addEventListener("load", startApp, false);
