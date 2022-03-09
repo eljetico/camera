@@ -39,12 +39,16 @@ function startApp() {
 hud.onclick = function() {
   hud.textContent = "WAIT";
 
-  DeviceOrientationEvent.requestPermission()
-  .then(response => {
-    if (response == "granted") {
-      hudStart();
-    }
-  });
+  if (window.DeviceOrientationEvent) {
+    DeviceOrientationEvent.requestPermission()
+    .then(response => {
+      if (response == "granted") {
+        hudStart();
+      }
+    });
+  } else {
+    hud.textContent = "NO DATA";
+  }
 };
 
 cameraTrigger.onclick = function() {
