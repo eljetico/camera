@@ -33,10 +33,12 @@ function hudStart() {
 
 function startApp() {
   cameraStart();
-  hudStart();
+  // hudStart();
 }
 
 hud.onclick = function() {
+  hud.textContent = "WAIT";
+
   DeviceOrientationEvent.requestPermission()
   .then(response => {
     if (response == "granted") {
