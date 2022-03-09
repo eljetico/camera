@@ -19,7 +19,7 @@ function cameraStart() {
 }
 
 function orientationHandler(eventData) {
-  console.info("Got an orientation event")
+  console.info("Got an orientation event");
 
   var tiltLR = eventData.gamma;
   var tiltFB = eventData.beta;
@@ -30,8 +30,8 @@ function orientationHandler(eventData) {
 
 function hudStart() {
   if (window.DeviceOrientationEvent) {
-    hud.textContent = "Ready"
-    window.addEventListener('deviceorientation', orientationHandler, false);
+    hud.textContent = "0224"
+    window.addEventListener("deviceorientation", orientationHandler, false);
   } else {
     hud.textContent = "No Data"
   }
