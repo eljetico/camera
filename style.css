@@ -3,7 +3,11 @@ html, body{
     padding: 0;
     height: 100%;
     width: 100%;
-    font-family: Andale Mono, monospace;
+    font-family: inherit;
+}
+
+body {
+    font-family: monospace;
 }
 
 #camera, #camera--view, #camera--sensor, #camera--output{

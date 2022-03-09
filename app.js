@@ -13,7 +13,7 @@ function addHudDataToImage(cameraSensor) {
   if (!hudActive) { return true };
 
   ctx = cameraSensor.getContext("2d")
-  ctx.font = "20px 'Andale Mono'";
+  ctx.font = "20px monospace";
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = '#66ff00';  // a color name or by using rgb/rgba/hex values
