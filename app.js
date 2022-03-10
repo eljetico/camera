@@ -18,6 +18,13 @@ function addHudDataToImage(cameraSensor) {
   ctx.textBaseline = 'middle';
   ctx.fillStyle = 'white';  // a color name or by using rgb/rgba/hex values
   ctx.fillText("PTCH " + pitchAngle, 50, 50); // text and position
+
+  // Draw image center
+  cX = cameraSensor.width / 2;
+  cY = cameraSensor.height / 2;
+
+  ctx.moveTo(cX - 100, cY);
+  ctx.lineTo(cX + 100, cY);
 }
 
 function cameraStart() {
