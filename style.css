@@ -20,7 +20,7 @@ html, body {
 #camera--trigger {
     opacity: 0.5;
     width: 100px;
-    background-color: none;
+    background: none;
     /* color: white; */
     font-size: 1.5em;
     /* border-radius: 15px; */
