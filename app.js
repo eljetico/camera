@@ -25,14 +25,16 @@ function addHudDataToImage(cameraSensor) {
   cX = cameraSensor.width / 2;
   cY = cameraSensor.height / 2;
 
+  fillStyle = 'rgba(255, 255, 255, 0.2)';
+
   ctx.moveTo(cX - 100, cY);
   ctx.lineTo(cX + 100, cY);
   ctx.strokeStyle = fillStyle;
   ctx.lineWidth = 2;
   ctx.stroke();
 
-  ctx.moveTo(cX, cY - 100);
-  ctx.lineTo(cX, cY + 100);
+  ctx.moveTo(cX, cY - 60);
+  ctx.lineTo(cX, cY + 60);
   ctx.strokeStyle = fillStyle;
   ctx.lineWidth = 2;
   ctx.stroke();
