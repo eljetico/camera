@@ -68,12 +68,12 @@ function draw() {
 }
 
 function updateHud() {
-  sign = "";
+  sign = "-";
 
   if (aspectRatio > 1 && _rawRoll > 0) {
-    sign = "+";
+    sign = ">";
   } else if (aspectRatio > 1 && _rawRoll <= 0) {
-    sign = "-";
+    sign = "<";
   }
 
   hud.textContent = "P:" + pitchAngle + "|R:" + rollAngle + "|" + sign;
