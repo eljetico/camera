@@ -27,7 +27,7 @@ function addHudDataToImage(cameraSensor) {
   ctx.moveTo(cX - 100, cY);
   ctx.lineTo(cX + 100, cY);
   ctx.closePath();
-  cts.stroke();
+  ctx.stroke();
 }
 
 function cameraStart() {
