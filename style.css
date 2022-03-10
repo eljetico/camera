@@ -18,27 +18,28 @@ html, body {
 }
 
 #camera--trigger {
-    width: 150px;
+    opacity: 0.5;
+    width: 100px;
     background-color: none;
     /* color: white; */
     font-size: 1.5em;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     border: 2px solid white;
     padding: 5px 5px;
     text-align: center;
     /* box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2); */
     position: fixed;
     bottom: 30px;
-    left: calc(50% - 75px);
+    left: calc(50% - 50px);
 }
 
 #hud {
-    opacity: 0.8;
+    opacity: 0.5;
     background-color: none;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     border: 2px solid white;
     padding: 5px 5px;
-    text-align: center;
+    text-align: right;
     position: absolute;
     top: 20px;
     left: 20px;
