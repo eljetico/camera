@@ -12,21 +12,23 @@ var hudActive = false;
 function addHudDataToImage(cameraSensor) {
   if (!hudActive) { return true };
 
+  var fillStyle = 'rgba(255, 255, 255, 0.8)';
+
   ctx = cameraSensor.getContext("2d")
   ctx.font = "20px ui-monospace";
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
-  ctx.fillStyle = 'white';  // a color name or by using rgb/rgba/hex values
+  ctx.fillStyle = fillStyle;  // a color name or by using rgb/rgba/hex values
   ctx.fillText("PTCH " + pitchAngle, 50, 50); // text and position
 
   // Draw image center
   cX = cameraSensor.width / 2;
   cY = cameraSensor.height / 2;
 
-  ctx.beginPath();
   ctx.moveTo(cX - 100, cY);
   ctx.lineTo(cX + 100, cY);
-  ctx.closePath();
+  ctx.strokeStyle = fillStyle;
+  ctx.lineWidth = 3;
   ctx.stroke();
 }
 
