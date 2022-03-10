@@ -32,6 +32,7 @@ body {
 }
 
 #hud {
+    font-family: monospace;
     opacity: 0.8;
     background-color: none;
     border-radius: 15px;
