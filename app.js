@@ -23,8 +23,11 @@ function addHudDataToImage(cameraSensor) {
   cX = cameraSensor.width / 2;
   cY = cameraSensor.height / 2;
 
+  ctx.beginPath();
   ctx.moveTo(cX - 100, cY);
   ctx.lineTo(cX + 100, cY);
+  ctx.closePath();
+  cts.stroke();
 }
 
 function cameraStart() {
