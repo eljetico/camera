@@ -5,10 +5,6 @@ html, body {
     width: 100%;
 }
 
-body {
-    font-family: "Tahoma";
-}
-
 #camera, #camera--view, #camera--sensor, #camera--output {
     position: fixed;
     height: 100%;
