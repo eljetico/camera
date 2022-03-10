@@ -1,4 +1,4 @@
-html, body{
+html, body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -6,17 +6,17 @@ html, body{
 }
 
 body {
-    font-family: sans-serif;
+    font-family: Tahoma;
 }
 
-#camera, #camera--view, #camera--sensor, #camera--output{
+#camera, #camera--view, #camera--sensor, #camera--output {
     position: fixed;
     height: 100%;
     width: 100%:
     object-fit: cover;
 }
 
-#camera--trigger{
+#camera--trigger {
     width: 200px;
     background-color: black;
     color: white;
@@ -32,7 +32,6 @@ body {
 }
 
 #hud {
-    font-family: monospace;
     opacity: 0.8;
     background-color: none;
     border-radius: 15px;
@@ -47,7 +46,7 @@ body {
     z-index: 99;
 }
 
-.taken{
+.taken {
     height: 120px!important;
     width: 90px!important;
     transition: all 0.5s ease-in;
