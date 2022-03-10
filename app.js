@@ -6,7 +6,8 @@ const cameraView = document.querySelector("#camera--view"),
       cameraTrigger = document.querySelector("#camera--trigger"),
       hud = document.querySelector("#hud")
 
-var pitchAngle, rollAngle = 0;
+var aspectRatio, pitchAngle, _rawRoll, rollAngle = 0;
+var aX = 0, aY = 0, aZ = 0;
 var hudActive = false;
 
 function addHudDataToImage(cameraSensor) {
@@ -52,28 +53,83 @@ function cameraStart() {
     });
 }
 
-function orientationHandler(eventData) {
-  rollAngle = Math.round(eventData.gamma);
-  pitchAngle = Math.round(eventData.beta);
-  // var direction = eventData.alpha;
+function draw() {
+  aspectRatio = document.body.clientWidth / document.body.clientHeight;
 
-  hud.textContent = "P:" + pitchAngle + "|R:" + rollAngle;
+  roll = Math.atan2(aX, aY);
+  pitch = -Math.atan2(aZ, aX * Math.sin(roll) + aY * Math.cos(roll));
+
+  pitchAngle = Math.round(pitch * 180/Math.PI);
+  rollAngle = Math.round(roll * 180/Math.PI);
+
+  updateHud(pitchAngle, rollAngle);
+
+  requestAnimationFrame(draw);
 }
 
+function updateHud() {
+  hud.textContent = "P:" + pitchAngle + "|R:" + rollAngle";
+}
+
+// DEPRECATE THIS
+// function orientationHandler(eventData) {
+//   rollAngle = Math.round(eventData.gamma);
+//   pitchAngle = Math.round(eventData.beta);
+//   // var direction = eventData.alpha;
+//
+//   hud.textContent = "P:" + pitchAngle + "|R:" + rollAngle;
+// }
+
 function hudStart() {
-  hud.textContent = "-"
-  window.addEventListener("deviceorientation", orientationHandler, false);
+  updateHud();
+  window.addEventListener("deviceorientation", updateOrientations, false);
+  window.addEventListener('devicemotion', updateAccelerations, true);
   hudActive = true;
 }
 
 function startApp() {
   cameraStart();
-  // hudStart();
+  draw();
+}
+
+function updateAccelerations(evt) {
+  if (!evt || !evt.accelerationIncludingGravity) {
+    return;
+  }
+
+  var accelData = evt.accelerationIncludingGravity;
+
+  var _aX = accelData.x;
+  var _aY = accelData.y;
+  var _aZ = accelData.z;
+
+  if (aspectRatio > 1 && _rawRoll > 0) {
+
+    aX = _aY;
+    aY = -_aX;
+
+  } else if (aspectRatio > 1 && _rawRoll <= 0) {
+
+    aX = -_aY;
+    aY = _aX;
+
+  } else {
+
+    aX = _aX;
+    aY = _aY;
+  }
+
+  aZ = _aZ;
+}
+
+function updateOrientations(evt) {
+  if (!evt || evt.gamma == null) {
+    return;
+  }
+  _rawRoll = evt.gamma;
 }
 
 hud.onclick = function() {
-  hud.textContent = "WAIT";
-
   if (window.DeviceOrientationEvent) {
     DeviceOrientationEvent.requestPermission()
     .then(response => {
@@ -82,7 +138,7 @@ hud.onclick = function() {
       }
     });
   } else {
-    hud.textContent = "NO DATA";
+    hud.textContent = "DENIED";
   }
 };
 
@@ -90,7 +146,7 @@ cameraTrigger.onclick = function() {
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-    addHudDataToImage(cameraSensor);
+    // addHudDataToImage(cameraSensor);
     cameraOutput.src = cameraSensor.toDataURL("image/jpeg");
     cameraOutput.classList.add("taken");
 };
