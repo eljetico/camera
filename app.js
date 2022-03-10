@@ -6,7 +6,7 @@ const cameraView = document.querySelector("#camera--view"),
       cameraTrigger = document.querySelector("#camera--trigger"),
       hud = document.querySelector("#hud")
 
-var pitchAngle = 0;
+var pitchAngle, rollAngle = 0;
 var hudActive = false;
 
 function addHudDataToImage(cameraSensor) {
@@ -53,11 +53,11 @@ function cameraStart() {
 }
 
 function orientationHandler(eventData) {
-  // var tiltLR = eventData.gamma;
+  rollAngle = Math.round(eventData.gamma);
   pitchAngle = Math.round(eventData.beta);
   // var direction = eventData.alpha;
 
-  hud.textContent = Math.round(pitchAngle);
+  hud.textContent = "P:" + pitchAngle + "|R:" + rollAngle;
 }
 
 function hudStart() {
