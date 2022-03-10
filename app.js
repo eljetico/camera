@@ -16,7 +16,7 @@ function addHudDataToImage(cameraSensor) {
   ctx.font = "20px ui-monospace";
   ctx.textAlign = 'left';
   ctx.textBaseline = 'middle';
-  ctx.fillStyle = '#ffffff';  // a color name or by using rgb/rgba/hex values
+  ctx.fillStyle = 'white';  // a color name or by using rgb/rgba/hex values
   ctx.fillText("PTCH " + pitchAngle, 50, 50); // text and position
 }
 
