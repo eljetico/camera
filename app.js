@@ -12,7 +12,7 @@ var hudActive = false;
 function addHudDataToImage(cameraSensor) {
   if (!hudActive) { return true };
 
-  var fillStyle = 'rgba(255, 255, 255, 0.8)';
+  var fillStyle = 'rgba(255, 255, 255, 0.5)';
 
   ctx = cameraSensor.getContext("2d")
   ctx.font = "20px ui-monospace";
@@ -28,7 +28,11 @@ function addHudDataToImage(cameraSensor) {
   ctx.moveTo(cX - 100, cY);
   ctx.lineTo(cX + 100, cY);
   ctx.strokeStyle = fillStyle;
-  ctx.lineWidth = 3;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  ctx.moveTo(cY - 100, cX);
+  ctx.lineTo(cY + 100, cX);
   ctx.stroke();
 }
 
