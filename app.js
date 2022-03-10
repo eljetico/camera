@@ -68,7 +68,7 @@ function draw() {
 }
 
 function updateHud() {
-  hud.textContent = "P:" + pitchAngle + "|R:" + rollAngle";
+  hud.textContent = "P:" + pitchAngle + "|R:" + rollAngle;
 }
 
 // DEPRECATE THIS
