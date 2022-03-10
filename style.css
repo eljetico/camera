@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-    font-family: Tahoma;
+    font-family: "Tahoma";
 }
 
 #camera, #camera--view, #camera--sensor, #camera--output {
