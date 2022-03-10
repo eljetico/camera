@@ -1,3 +1,7 @@
+* {
+  font-family: ui-monospace;
+}
+
 html, body {
     margin: 0;
     padding: 0;
